@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MovieDataResponse } from '../models/movies';
+import { Movie, MovieDataResponse } from '../models/movies';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -18,6 +18,20 @@ export class MoviesService {
       .pipe(
         switchMap((responseData) => {
           return of(responseData.results.slice(0, count));
+        })
+      );
+  }
+
+  getMovie(id: string) {
+    return this.httpRequests.get<Movie>(`${this.baseUrl}/movie/${id}?api_key=${this.apiKey}`)
+  }
+
+  searchMovies(page_number: number) {
+    return this.httpRequests
+      .get<MovieDataResponse>(`${this.baseUrl}/movie/popular?page=${page_number}&api_key=${this.apiKey}`)
+      .pipe(
+        switchMap((responseData) => {
+          return of(responseData.results);
         })
       );
   }

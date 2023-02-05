@@ -12,6 +12,10 @@ import { SliderComponent } from './components/slider/slider.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
 import { ItemGenericComponent } from './components/item-generic/item-generic.component';
+
+import { PaginatorModule } from 'primeng/paginator';
+import { MovieComponent } from './pages/movie/movie.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +25,10 @@ import { ItemGenericComponent } from './components/item-generic/item-generic.com
     MoviesComponent,
     SliderComponent,
     ItemsBannerComponent,
-    ItemGenericComponent
+    ItemGenericComponent,
+    MovieComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, PaginatorModule],
   providers: [],
   bootstrap: [AppComponent]
 })
